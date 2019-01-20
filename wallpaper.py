@@ -53,7 +53,7 @@ def generate(arguments):
     draw = ImageDraw.Draw(im)
 
     if COOLORS_URL == None:
-        colours = colourtools.generatePalette(NUM_COLOURS)
+        colours = colourtools.generatePalette()
         TAG = '_'.join(['{}-{}-{}'.format(col.r, col.g, col.b) for col in colours])
     else:
         colours = parseCoolorsUrl(COOLORS_URL)
