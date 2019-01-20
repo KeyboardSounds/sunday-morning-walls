@@ -1,7 +1,7 @@
 FROM python:alpine3.7
-
-# Pillow dependencies
-RUN apk add jpeg-dev \
+RUN apk add \
+            # pillow dependencies
+            jpeg-dev \
             zlib-dev \
             freetype-dev \
             lcms2-dev \
@@ -11,10 +11,9 @@ RUN apk add jpeg-dev \
             tcl-dev \
             harfbuzz-dev \
             fribidi-dev \
-            # build deps
+            # pillow build deps
             gcc \
-            musl-dev \
-            python-dev python3-dev
+            musl-dev
 
 # Install app dependencies
 COPY ./requirements.txt /app/requirements.txt
@@ -23,4 +22,4 @@ RUN pip install -r ./requirements.txt
 
 # Set up app dir
 COPY . /app
-CMD python ./main.py
+ENTRYPOINT ["python", "./wallpaper.py"]
